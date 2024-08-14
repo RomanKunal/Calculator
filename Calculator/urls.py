@@ -15,14 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path ,include # include is used to include urls from other apps
 from Calculator import views
 
 urlpatterns = [
+    path('home/',include('myApp.urls')),
     path('admin/', admin.site.urls),
-    path('home/',views.home),
-    path('submit/',views.add),
-    path('submit/',views.sub),
-    path('submit/',views.mul),
-    path('submit/',views.div)
+    path('', views.calculator_view, name='calculator'),
 ]

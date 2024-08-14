@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Form</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Simple Calculator</title>
 </head>
 <body>
-    <div class="form-container">
-        <h2>Input Form</h2>
-        <form action="/submit/" method="post">
-            {% csrf_token %}
-            <label for="input1">Input 1:</label>
-            <input type="text" id="input1" name="input1" required>
-
-            <label for="input2">Input 2:</label>
-            <input type="text" id="input2" name="input2" required>
-
-            <label for="input3">Symbol: </label>
-            <input type="text" id="input3" name="input3" required>
-
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    
+    <h1>CALCI</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="number" name="num1" step="any" required>
+        <select name="operation">
+            <option value="add">+</option>
+            <option value="subtract">-</option>
+            <option value="multiply">*</option>
+            <option value="divide">/</option>
+        </select>
+        <input type="number" name="num2" step="any" required>
+        <button type="submit">Calculate</button>
+    </form>
+    {% if result is not None %}
+        <h2>Result: {{ result }}</h2>
+    {% endif %}
 </body>
 </html>
+
